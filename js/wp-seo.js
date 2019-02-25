@@ -390,12 +390,18 @@
 		/*\\\\\\\\\\\\\\\\\\\\
 		 * CONTENT WORD COUNT |
 		*/////////////////////
+		var post_content = '';
 		var body_word_count = 0;
 		if($('#wp-word-count span.word-count').length){
+			post_content = $('#content').html();
 			body_word_count = parseInt($('#wp-word-count span.word-count')[0].innerHTML);
 		}
-
-		console.log(body_word_count);
+		var post_content_clean = '';
+		var post_content_arr = [];
+		post_content_clean = post_content.all_replace({'&lt;/em&gt;':'', '&lt;em&gt;':'', '&lt;':'', '&gt':'', 'href':'', '=':'', '"':'', '/a':'', ';':'' });
+		post_content_clean = post_content_clean.toLowerCase();
+		post_content_arr = post_content_clean.split(' ');
+		post_content_clean = post_content.match(reg = new RegExp('http://([a-z]{1,}[^/][a-z]{1,})/([a-z]{1,})/([a-z|A-Z|0-9-]{1,})'));
 
 		if(body_word_count > 0 && typeof(body_word_count) === 'number'){
 
