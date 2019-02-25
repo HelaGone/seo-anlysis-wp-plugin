@@ -357,15 +357,12 @@
 				regex = new RegExp('([a-z-]{1,})\/?$');
 				post_end = post_url.match(regex)
 			}
-		}
-
-		if(post_end == null){
 		}else{
 			post_end = post_end[0];
 			post_end = post_end.replace('/','');
 			url_seo_words = post_end.split('-');
-			console.log(url_seo_words+" <<< url seo words");
-			console.log(url_seo_words.length+" <<< url length");
+			// console.log(url_seo_words+" <<< url seo words");
+			// console.log(url_seo_words.length+" <<< url length");
 		}
 
 
@@ -393,37 +390,33 @@
 		/*\\\\\\\\\\\\\\\\\\\\
 		 * CONTENT WORD COUNT |
 		*/////////////////////
-		var post_content = '';
-		if($('#content').length){
-			post_content = $('#content').html();
+		var body_word_count = 0;
+		if($('#wp-word-count span.word-count').length){
+			body_word_count = parseInt($('#wp-word-count span.word-count')[0].innerHTML);
 		}
-		var post_content_clean = '';
-		var post_content_arr = [];
-		post_content_clean = post_content.all_replace({'&lt;/em&gt;':'', '&lt;em&gt;':'', '&lt;':'', '&gt':'', 'href':'', '=':'', '"':'', '/a':'', ';':'' });
-		post_content_clean = post_content_clean.toLowerCase();
-		post_content_arr = post_content_clean.split(' ');
-		post_content_clean = post_content.match(reg = new RegExp('http://([a-z]{1,}[^/][a-z]{1,})/([a-z]{1,})/([a-z|A-Z|0-9-]{1,})'));
 
-		if(Array.isArray(post_content_arr) && post_content_arr != ''){
+		console.log(body_word_count);
 
-			if(post_content_arr.length >= 80 && post_content_arr.length <= 300){
-				console.log('para google news');
+		if(body_word_count > 0 && typeof(body_word_count) === 'number'){
+
+			if(body_word_count >= 80 && body_word_count <= 300){
+				// console.log('para google news');
 				$('#wp-word-count').append('<p style="background:'+warn_green+'; color:#000;">Post listo para mandar a Google News</p>');
 			}
 
-			if(post_content_arr.length < 300){
+			if(body_word_count < 300){
 					$('#body_status div.signal').removeClass('go');
 					$('#body_status div.signal').removeClass('warn');
 					$('#body_status div.signal').addClass('stop');
 					$('#wp-word-count').append('<p style="background:'+warn_red+'; color:#000;">MISSING WORDS. Your post should have 300 words at least.</p>');
 					$('#wp-word-count span.word-count').css({color: warn_red});
-			}else if(post_content_arr.length >= 300 && post_content_arr.length <= 399){
+			}else if(body_word_count >= 300 && body_word_count <= 399){
 					$('#body_status div.signal').removeClass('stop');
 					$('#body_status div.signal').removeClass('go');
 					$('#body_status div.signal').addClass('warn');
 					$('#wp-word-count').append('<p style="background:'+warn_orange+'; color:#000;">GOOD! It is recommended to have more than 400 words in your post</p>');
 					$('#wp-word-count span.word-count').css({color: warn_orange});
-			}else if(post_content_arr.length >= 400){
+			}else if(body_word_count >= 400){
 					$('#body_status div.signal').removeClass('stop');
 					$('#body_status div.signal').removeClass('warn');
 					$('#body_status div.signal').addClass('go');
@@ -461,7 +454,7 @@
 					/*TITLE TEST*/
 					$.each(arr_title_words, function(k, val){
 						if(v == val){
-							console.log("Matches: >>>>>"+val);
+							// console.log("Matches: >>>>>"+val);
 							matches_ttl.push(val);
 							if(matches_ttl.length >= 1){
 								$('#title_status div.sig_dos').addClass('go');
@@ -542,7 +535,6 @@
 					$('#keyword_status div.sig_dos').addClass('go');
 					$('#objectivew_status div.sig_dos').addClass('clearance');
 					$('.is_empty').html('Post ready for publish!').css({color:warn_green, 'text-align':'center'});
-				}else{
 				}
 
 			}else{

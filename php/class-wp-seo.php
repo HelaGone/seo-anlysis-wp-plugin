@@ -392,7 +392,7 @@ class WP_SEO {
 			$_POST['seo_meta'] = array();
 		}
 
-		foreach ( array( 'title', 'description', 'keywords', 'objective' ) as $field ) {
+		foreach ( array( 'objective', 'title', 'description', 'keywords' ) as $field ) {
 			$data = isset( $_POST['seo_meta'][ $field ] ) ? sanitize_text_field( $_POST['seo_meta'][ $field ] ) : '';
 			update_post_meta( $post_id, '_meta_' . $field, $data );
 		}
