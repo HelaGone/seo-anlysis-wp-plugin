@@ -759,6 +759,7 @@ class WP_SEO {
 
 			if ( $meta_keywords && ! is_wp_error( $meta_keywords ) ) {
 				$this->meta_field( 'keywords', $meta_keywords );
+				$this->meta_field( 'news_keywords', $meta_keywords );
 			}
 		}
 
