@@ -3,9 +3,9 @@
 	Plugin Name: WP SEO ANALYSIS 
 	Plugin URI: https://github.com/alleyinteractive/wp-seo
 	Description: An SEO plugin that stays out of your way. Just the facts, Jack.
-	Version: 0.9.0
+	Version: 1.1.0
 	Author: Alley Interactive, Matthew Boynes, David Herrera, Holkan Luna
-	Author URI: http://www.alleyinteractive.com/ | http://www.cubeinthebox.com/
+	Author URI: http://www.alleyinteractive.com/ | https://cubeinthebox.com/
 */
 /*  This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
