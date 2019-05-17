@@ -188,13 +188,13 @@ class WP_SEO {
 					<tr>
 						<th scope="row"><label for="wp_seo_meta_title"><?php esc_html_e( 'Title Tag', 'wp-seo' ); ?></label></th>
 						<td>
-							<input type="text" id="wp_seo_meta_title" name="seo_meta[title]" value="<?php echo esc_attr( $title = get_post_meta( $post->ID, '_meta_title', true ) ); ?>" size="96" maxlength="60"/>
+							<input type="text" id="wp_seo_meta_title" name="seo_meta[title]" value="<?php echo esc_attr( $title = get_post_meta( $post->ID, '_meta_title', true ) ); ?>" size="96" maxlength="60" minlength="50" />
 							<div>
 								<?php esc_html_e( 'Title word count: ', 'wp-seo' ); ?>
 								<span class="title-character-count"></span>
 								<noscript><?php echo esc_html( $this->noscript_character_count( $title ) ); ?></noscript>
 								<span>
-									<em>Debe tener entre 6 y 8 palabras y máximo 60 letras</em>
+									<em>Debe tener entre 6 y 8 palabras (entre 50 y 60 caracteres)</em>
 								</span>
 							</div>
 						</td>
@@ -202,13 +202,13 @@ class WP_SEO {
 					<tr>
 						<th scope="row"><label for="wp_seo_meta_description"><?php esc_html_e( 'Meta Descripción', 'wp-seo' ); ?></label></th>
 						<td>
-							<textarea id="wp_seo_meta_description" name="seo_meta[description]" rows="2" cols="96"><?php echo esc_textarea( $description = get_post_meta( $post->ID, '_meta_description', true ) ); ?></textarea>
+							<textarea id="wp_seo_meta_description" name="seo_meta[description]" rows="2" cols="96" maxlength="160"><?php echo esc_textarea( $description = get_post_meta( $post->ID, '_meta_description', true ) ); ?></textarea>
 							<div>
 								<?php esc_html_e( 'Description word count: ', 'wp-seo' ); ?>
 								<span class="description-character-count"></span>
 								<noscript><?php echo esc_html( $this->noscript_character_count( $description ) ); ?></noscript>
 								<span>
-									<em>Debe tener entre 12 - 24 palabras</em>
+									<em>Debe tener entre 12 - 24 palabras o hasta 160 caracteres</em>
 								</span>
 							</div>
 						<td>
