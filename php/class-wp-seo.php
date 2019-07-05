@@ -395,6 +395,9 @@ class WP_SEO {
 		foreach ( array( 'objective', 'title', 'description', 'keywords' ) as $field ) {
 			$data = isset( $_POST['seo_meta'][ $field ] ) ? sanitize_text_field( $_POST['seo_meta'][ $field ] ) : '';
 			update_post_meta( $post_id, '_meta_' . $field, $data );
+			if($field==='title'){
+				update_post_meta($post_id, '_genesis_title', $data);
+			}
 		}
 	}
 
