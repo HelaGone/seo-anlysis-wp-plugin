@@ -397,6 +397,7 @@ class WP_SEO {
 			update_post_meta( $post_id, '_meta_' . $field, $data );
 			if($field==='title'){
 				update_post_meta($post_id, '_genesis_title', $data);
+				update_post_meta($post_id, '_open_graph_title', get_the_title($post_id));
 			}
 		}
 	}
